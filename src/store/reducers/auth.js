@@ -42,6 +42,8 @@ const authReducer = (state = initialState, action)=> {
             user: null,
             isAuthenticated: false,
             isLoading: false,
+            refresh: null,
+            access: null
         };
         default:
         return state;
@@ -130,6 +132,35 @@ export const logout = () => (dispatch) => {
         type: "LOGOUT_SUCCESS",
     });
 };
+
+// EMAIL TOKEN VALIDATE
+export const validateEmail = (token) => async (dispatch, getState) => {
+  try {
+    const { data } = await axiosInstance.post('/auth/verify-email/', {token});
+    if(data.success){
+      dispatch(returnMessages(data,"success"));
+      return 1
+    }
+  } catch (error) {
+      dispatch(returnErrors(error.response.data, error.response.status))
+      if(error.response.data.message) 
+        if(error.response.data.message==="Token Expired") 
+          return 3;
+      else return 2;
+  }
+} 
+
+// SEND VERIFICATION EMAIL
+export const sendVerificationEmail = (email) => async (dispatch, getState) => {
+  try {
+    const { data } = await axiosInstance.post('/auth/email-verify-request/', {email});
+    if(data.success){
+      dispatch(returnMessages(data,"success"))
+    }
+  } catch (error) {
+      dispatch(returnErrors(error.response.data, error.response.status))
+  }
+} 
 
 export const tokenConfig = (getState) => {
 
