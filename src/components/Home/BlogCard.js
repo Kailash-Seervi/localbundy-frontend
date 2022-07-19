@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 import image2 from "../../assets/images/local-bundy-image-5.png"
-import PostImage from "../../assets/images/local-bundy-image-2.png"
 import LikeIcon from "../../assets/images/icon.svg"
 import LoveIcon from "../../assets/images/icon-1.svg"
 import { Link } from "react-router-dom";
-// import ShareIcon from "../../assets/images/icon-2.svg"
+import ShareButton from "../ShareButton/ShareButton";
+import ShareIcon from "../../assets/images/icon-2.svg"
 
 
 function BlogCard({data, handleLike, handleLove, detailView}) {
+
+    const [showShare, setShowShare] = useState(0);
+
+    const handleonClick = (e)=>{
+        e.preventDefault();
+        setShowShare(!showShare);
+    }
+
+
     return (
         <div className="col-xl-12 col-sm-12 col-12 mt-4">
-            {/* <div className="col-xl-12">
-                <div className="d-flex justify-content-between">
-                    <h4>Stephan jonh Business timeline public timeline</h4>
-                    <p >Entries 1-12 of 12</p>
-                </div>
-            </div> */}
             <div className="card mb-3 ">
                 <div className="card-body p-0">
                     <div className="m-4">
@@ -33,10 +36,17 @@ function BlogCard({data, handleLike, handleLove, detailView}) {
                                 <p className="mb-1 fw-normal">{data.body && data.body}</p>
                                 {/* <span className="mb-1  text-primary">https://www.youtube.com/watch?v=taeHDv5Ve-8</span>  */}
                                 {data.image && <img className="img-fluid mt-2 w-100" loading="lazy" src={data.image} width="746" height="336"  alt="local bundy"/>}
-                                <div className="mt-3 mb-3"> 
+                                <div className="mt-3 mb-3" style={{position:"relative"}}> 
                                     <img src={LikeIcon} alt="like" onClick={()=>handleLike(data.id)}/>&nbsp; &nbsp;{data.likes && data.likes}&nbsp;&nbsp; 
                                     <img src={LoveIcon} alt="love" onClick={()=>handleLove(data.id)}/>&nbsp; &nbsp;{data.loves && data.loves} &nbsp;&nbsp; 
-                                    {/* <img src={ShareIcon} alt="share"/>&nbsp;&nbsp;30K  */}
+                                    
+                                    {showShare?<ShareButton shareUrl={`https://shiny-griffin-ea95a4.netlify.app/blogs/${data.id}`} title={`Checkout ${data.author}'s post`} handleClose={handleonClick}/>:false}
+
+                                    <img 
+                                    role={"button"}
+                                        className="share-btn"
+                                        onClick={handleonClick}
+                                        src={ShareIcon} alt="share"/> 
                                     <span className="float-end">Views&nbsp;[{data.views && data.views}]</span> 
                                 </div>
                             </div>

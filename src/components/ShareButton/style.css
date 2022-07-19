@@ -1,0 +1,14 @@
+.share__container{
+    position:absolute;
+    top: -20px;
+    left: 130px;
+    transition: all 0.5s ease-out;
+}
+
+.share-btn{
+    cursor: pointer;
+}
+
+/* .share-btn:hover + .share__container{
+    display: block;
+} */
