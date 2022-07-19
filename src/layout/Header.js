@@ -25,7 +25,7 @@ function Header() {
                     <Link to="/blogs">
                         <img className="img-fluid" src={LocalBundy} width="190" alt="local bundy"/> 
                     </Link>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="navbar-collapse" id="navbarSupportedContent" style={{gap:"10px"}}>
                         <div className="col-xl-5 col-sm-8 col-12 ms-auto">
                             <div className="row me-5">
                                 <div className="input-group  mt-1 mb-1 ">
@@ -34,9 +34,9 @@ function Header() {
                             </div>
                         </div>
                         {isAuthenticated?(
-                            <React.Fragment>
-                                <Link to="/create-blog">
-                                    <div className="col-lg-10  mx-3  mt-1">
+                            <div className="d-flex col-lg-4" style={{gap:"10px"}}>
+                                <Link to="/create-blog" className="d-block" style={{maxWidth:"120px"}}>
+                                    <div className="col-lg-10  mx-3  mt-1" >
                                         <div className="row"> 
                                             <button className="btn btn-success text-white mb-2" role="button" >Create Blog</button> 
                                         </div>
@@ -47,7 +47,7 @@ function Header() {
                                         <button onClick={handleLogout} className="btn btn-dark text-white mb-2" role="button" >Logout</button> 
                                     </div>
                                 </div>
-                            </React.Fragment>
+                            </div>
                             ):(
                             <React.Fragment>
                                 <div className="col-lg-2  mx-3  mt-1" style={{maxWidth:"60px"}}>
