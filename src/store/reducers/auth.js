@@ -110,20 +110,20 @@ export const register = ({ username, password, email }) => async (dispatch,getSt
 
   const body = JSON.stringify({ username, email, password });
 
-  const { data } = await axiosInstance.post('/auth/signup/', body, config);
-
-  if(data.success){
-    returnMessages(data,"success");
-    dispatch({
+  try {
+    const { data } = await axiosInstance.post('/auth/signup/', body, config);
+    if(data.success){
+      dispatch(returnMessages(data,"success"));
+      dispatch({
         type: "REGISTER_SUCCESS",
       });
+    }
+  } catch (error) {
+      dispatch(returnErrors(error.response.data, error.response.status))
+      dispatch({
+        type: "REGISTER_FAIL",
+      });
   }
-  else{
-    dispatch({
-      type: "REGISTER_FAIL",
-    });
-  }
-    return data
 };
 
 // LOGOUT USER

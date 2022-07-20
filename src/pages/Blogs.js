@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {useDispatch} from "react-redux";
-import Pagination from '../components/Home/Pagination';
-import BlogCard from "../components/Home/BlogCard";
+import Pagination from '../components/Blog/Pagination';
+import BlogCard from "../components/Blog/BlogCard";
 
 import Ad from "../assets/images/ad.jpg"
 import { getBlogs, likeBlog, loveBlog } from '../store/reducers/blog';
-// import LikeIcon from "../assets/images/icon.svg"
-// import LoveIcon from "../assets/images/icon-1.svg"
-// import ShareIcon from "../assets/images/icon-2.svg"
-// import image1 from "../assets/images/local-bundy-image.png"
 
-
-
-function Home() {
+function Blogs() {
 
     const dispatch = useDispatch()
     const [Blogs, setBlogs] = useState([]);
@@ -86,4 +80,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Blogs;

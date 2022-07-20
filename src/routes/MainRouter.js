@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { 
   Login, 
   Signup, 
-  Home, 
+  Blogs, 
   CreateBlog, 
   BlogDetails,
   EmailVerify
@@ -23,7 +23,7 @@ const MainRouter = () => {
             </Route>
 
             <Route path="/" element={<PublicPrivateRoute/>}>
-              <Route path="blogs" element={<Home/>}/>
+              <Route path="blogs" element={<Blogs/>}/>
               <Route path="blogs/:blogId" element={<BlogDetails />}/>
             </Route>
             

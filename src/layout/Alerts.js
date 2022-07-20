@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors } from '../store/reducers/errAlerts';
 import { clearMessages } from '../store/reducers/msgAlerts';
 import Alert from "react-bootstrap/Alert";
-// import usePrevious from '../hooks/usePrevious';
 
 const Alerts = () => {
 
@@ -14,8 +13,6 @@ const Alerts = () => {
     const message = useSelector(state=>state.message);
     const [alertErrMsg, setErrAlertMsg] = useState('');
     const [alertMsg, setAlertMsg] = useState('');
-    // const prevErrState = usePrevious({msg:error.msg, status:error.status});
-    // const prevMsgState = usePrevious({msg:message.msg, status:message.status});
 
     const handleDismissErr = ()=>{
         setErrAlertMsg('');
@@ -28,12 +25,12 @@ const Alerts = () => {
     }
 
     useEffect(()=>{
-        if (error.msg.name) setErrAlertMsg(`Name: ${error.msg.name.join()}`);
+        if (error.msg.name) setErrAlertMsg(`Name: ${error.msg.name}`);
         if (typeof error.msg ==='object' && "success" in error.msg) setErrAlertMsg(`Error: ${error.msg.message}`);
-        if (error.msg.email) setErrAlertMsg(`Email: ${error.msg.email.join()}`);
-        if (error.msg.message) setErrAlertMsg(`Message: ${error.msg.message.join()}`);
-        if (error.msg.non_field_errors) setErrAlertMsg(error.msg.non_field_errors.join());
-        if (error.msg.username) setErrAlertMsg(error.msg.username.join());
+        if (error.msg.email) setErrAlertMsg(`Email: ${error.msg.email}`);
+        if (error.msg.message) setErrAlertMsg(`Message: ${error.msg.message}`);
+        if (error.msg.non_field_errors) setErrAlertMsg(error.msg.non_field_errors);
+        if (error.msg.username) setErrAlertMsg(error.msg.username);
         if(typeof error.msg === 'string') setErrAlertMsg(error.msg);
     },[error.msg, error.status])
 

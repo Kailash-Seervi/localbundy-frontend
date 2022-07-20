@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 import { useParams } from "react-router-dom";
 
 
-import BlogCard from "../components/Home/BlogCard";
+import BlogCard from "../components/Blog/BlogCard";
 
 import Ad from "../assets/images/ad.jpg"
 import { getBlog, likeBlog, loveBlog } from '../store/reducers/blog';

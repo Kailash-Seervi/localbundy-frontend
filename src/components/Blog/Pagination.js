@@ -16,8 +16,8 @@ function AdvPagination({paginationOptions, getData}) {
         <Pagination>
             <Pagination.First disabled={page_number===1} onClick={()=>getData(1)} />
             <Pagination.Prev disabled={page_number===previous} onClick={()=>getData(previous)}/>
-            {pages.map(i=>{
-               return <Pagination.Item active={page_number===i+1} onClick={()=>getData(i+1)}>{i+1}</Pagination.Item>
+            {pages.map((i,idx)=>{
+               return <Pagination.Item key={idx} active={page_number===i+1} onClick={()=>getData(i+1)}>{i+1}</Pagination.Item>
             })}
             {/* <Pagination.Ellipsis /> */}
             <Pagination.Next disabled={page_number===next} onClick={()=>getData(next)} />

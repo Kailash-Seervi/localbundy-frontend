@@ -40,15 +40,7 @@ function Signup() {
             alert("Please agree the terms and conditions")
             return
         }
-        dispatch(register({username:Username,password:Password, email:Email1})).then(data=>{
-            if(data.success){
-                alert(`${data.message}. Please verify your email to login.`)
-                navigate("/login")
-            }
-            else{
-                alert("Failed!")
-            }
-        });
+        dispatch(register({username:Username,password:Password, email:Email1}));
     }
 
     return (

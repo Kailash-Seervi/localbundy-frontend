@@ -2,53 +2,23 @@ import React from 'react';
 import {
     EmailIcon,
     FacebookIcon,
-    FacebookMessengerIcon,
-    HatenaIcon,
-    InstapaperIcon,
-    LineIcon,
     LinkedinIcon,
-    LivejournalIcon,
-    MailruIcon,
-    OKIcon,
-    PinterestIcon,
-    PocketIcon,
-    RedditIcon,
-    TelegramIcon,
-    TumblrIcon,
     TwitterIcon,
-    ViberIcon,
-    VKIcon,
-    WeiboIcon,
     WhatsappIcon,
-    WorkplaceIcon
   } from "react-share";
 
   import {
     EmailShareButton,
     FacebookShareButton,
-    HatenaShareButton,
-    InstapaperShareButton,
-    LineShareButton,
     LinkedinShareButton,
-    LivejournalShareButton,
-    MailruShareButton,
-    OKShareButton,
-    PinterestShareButton,
-    PocketShareButton,
-    RedditShareButton,
-    TelegramShareButton,
-    TumblrShareButton,
     TwitterShareButton,
-    ViberShareButton,
-    VKShareButton,
     WhatsappShareButton,
-    WorkplaceShareButton
   } from "react-share";
 
   import "./style.css"
 
 
-const ShareButton = ({shareUrl='https://github.com', title='GitHub', handleClose}) => {
+const ShareButton = ({shareUrl='', title='', handleClose}) => {
 
     return (
       <div className="share__container" >
